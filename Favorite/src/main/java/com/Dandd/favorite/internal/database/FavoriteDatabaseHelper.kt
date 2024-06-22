@@ -5,9 +5,9 @@ import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.SQLException
 
-class FavoriteDatabaseHelper(val connection: Connection): IFavoriteDatabase {
+class FavoriteDatabaseHelper(private val connection: Connection): IFavoriteDatabase {
     fun createTable() {
-        val statement = connection?.createStatement()
+        val statement = connection.createStatement()
         statement?.executeUpdate(
             "CREATE TABLE IF NOT EXISTS Favorite (" +
                     "entityId TEXT, " +
@@ -18,7 +18,7 @@ class FavoriteDatabaseHelper(val connection: Connection): IFavoriteDatabase {
     }
 
     override fun setFavorite(favorite: FavoriteModel) {
-        val preparedStatement = connection?.prepareStatement(
+        val preparedStatement = connection.prepareStatement(
             "INSERT INTO FavoriteDBEntity (entityId, accountName, entityType) VALUES (?, ?, ?)"
         )
         preparedStatement?.setString(1, favorite.entityId)
@@ -28,7 +28,7 @@ class FavoriteDatabaseHelper(val connection: Connection): IFavoriteDatabase {
     }
 
     override fun removeFavorite(favorite: FavoriteModel) {
-        val preparedStatement = connection?.prepareStatement(
+        val preparedStatement = connection.prepareStatement(
             "DELETE FROM Favorite WHERE entityId = ? AND accountName = ? AND entityType = ?"
         )
         preparedStatement?.setString(1, favorite.entityId)
@@ -38,7 +38,7 @@ class FavoriteDatabaseHelper(val connection: Connection): IFavoriteDatabase {
     }
 
     override fun getFavorites(accountName: String, entityType: String): List<FavoriteModel> {
-        val statement = connection?.createStatement()
+        val statement = connection.createStatement()
         val resultSet = statement?.executeQuery("SELECT * FROM FavoriteDBEntity WHERE accountName = $accountName AND entityType = $entityType")
         val favorites = mutableListOf<FavoriteModel>()
         while (resultSet?.next() == true) {

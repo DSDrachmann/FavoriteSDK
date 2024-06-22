@@ -27,11 +27,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
@@ -50,10 +50,17 @@ afterEvaluate {
         publications {
             register("release", MavenPublication::class) {
                 groupId = "com.github.dsdrachmann"
-                artifactId = "clock-counter-sdk"
+                artifactId = "favorite-sdk"
                 version = "0.0.1"
 
                 from(components["release"])
+            }
+            create<MavenPublication>("debug") {
+                groupId = "com.github.dsdrachmann"
+                artifactId = "favorite-sdk"
+                version = "0.0.1"
+
+                from(components["debug"])
             }
         }
     }
