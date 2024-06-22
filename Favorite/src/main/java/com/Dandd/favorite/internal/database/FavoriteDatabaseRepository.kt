@@ -18,4 +18,8 @@ class FavoriteDatabaseRepository(private val database: FavoriteRoomDatabase){
     suspend fun getFavorites(inputAccountName: String, inputEntityType: String): List<FavoriteEntity> {
         return favoriteDao.getFavorites(inputAccountName, inputEntityType)
     }
+
+    suspend fun removeAllFavorites(inputAccountName: String, inputEntityType: String) {
+        favoriteDao.removeAllFavorites(inputEntityType = inputEntityType, inputAccountName = inputAccountName)
+    }
 }

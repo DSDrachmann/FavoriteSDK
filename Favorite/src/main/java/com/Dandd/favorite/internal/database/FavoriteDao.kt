@@ -20,4 +20,7 @@ interface FavoriteDao {
 
     @Query("Select * FROM favoriteEntity WHERE accountName = :inputAccountName AND entityType = :inputEntityType")
     suspend fun getFavorites(inputAccountName: String, inputEntityType: String): List<FavoriteEntity>
+
+    @Query("Delete FROM favoriteEntity WHERE accountName = :inputAccountName AND entityType = :inputEntityType")
+    suspend fun removeAllFavorites(inputAccountName: String, inputEntityType: String)
 }
