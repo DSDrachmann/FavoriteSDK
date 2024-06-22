@@ -152,8 +152,8 @@ To use it outside the UI you can do this instead:
 ```
 
 ## Methods
-`insertFavoriteEntity(item: FavoriteEntity)` Call this with an instantiated FavoriteEntity object to insert that object into the local storage
-`removeFavoriteEntity(item: FavoriteEntity)` Call this to remove a row from the object.
-`getFavorites(inputAccountName: String, inputEntityType: String): List<FavoriteEntity>` Call this to retrieve all favorites and do with them as you like.
-`removeAllFavorites(inputAccountName: String, inputEntityType: String)` Call this to remove all favorites from a user on a entityType.
+`insertFavoriteEntity(item: FavoriteEntity)` Call this with an instantiated FavoriteEntity object to insert that object into the local storage  
+`removeFavoriteEntity(item: FavoriteEntity)` Call this to remove a row from the object.  
+`getFavorites(inputAccountName: String, inputEntityType: String): List<FavoriteEntity>` Call this to retrieve all favorites and do with them as you like.  
+`removeAllFavorites(inputAccountName: String, inputEntityType: String)` Call this to remove all favorites from a user on a entityType.  
 
