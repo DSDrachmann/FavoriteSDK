@@ -22,4 +22,6 @@ class FavoriteDatabaseRepository(private val database: FavoriteRoomDatabase){
     suspend fun removeAllFavorites(inputAccountName: String, inputEntityType: String) {
         favoriteDao.removeAllFavorites(inputEntityType = inputEntityType, inputAccountName = inputAccountName)
     }
+
+    //comment to see commit history
 }
