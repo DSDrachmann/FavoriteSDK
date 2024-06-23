@@ -39,6 +39,7 @@ class MainActivity : ComponentActivity() {
          * BUILD -> REBUILD PROJECT
          *
          * (the 3 above steps is also neccesary if wanting to build and execute on a new computer that has imported the project)
+         * Also make sure not to commit the //include(":app") or include(":app") on any branches as the setup is as it is.
          *
          */
 
