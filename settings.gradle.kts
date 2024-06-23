@@ -20,4 +20,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "FavoriteSDKProject"
+include(":app")
 include(":Favorite")

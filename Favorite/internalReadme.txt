@@ -1,0 +1,2 @@
+If you add anything to the favorite module branches, then also make a PR into the appProject branch.
+this way, the project can easily be maintained without having the releases containing the app sub module.
