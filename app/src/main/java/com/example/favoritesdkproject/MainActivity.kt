@@ -27,6 +27,21 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        /***
+         *
+         * SUPER IMPORTANT!!! The develop branch has the module attached in the settings.gradle file!!!
+         * REMEMBER to //include(":app") before pushing to any branch that is only module functionality (so all branches except for appProject branch
+         * ALSO, after the push, make a PR into the app-project branch so its up to date!!
+         *
+         * IF SITTING IN A BRANCH DERIVED FROM DEVELOP AND WANTING TO TEST DIRECTLY, SIMPLY:
+         * RE-ADD include(":app")
+         * BUILD -> CLEAN PROJECT
+         * BUILD -> REBUILD PROJECT
+         *
+         * (the 3 above steps is also neccesary if wanting to build and execute on a new computer that has imported the project)
+         *
+         */
+
         // Initialize Room database and repository
         database = favoriteDatabaseProvider.getInstance(this)
         favoriteRepository = FavoriteDatabaseRepository(database)
