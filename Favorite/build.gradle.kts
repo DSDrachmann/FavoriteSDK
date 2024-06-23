@@ -56,14 +56,14 @@ afterEvaluate {
             register("release", MavenPublication::class) {
                 groupId = "com.github.dsdrachmann"
                 artifactId = "favorite-sdk"
-                version = "0.0.1"
+                version = "0.0.3"
 
                 from(components["release"])
             }
             create<MavenPublication>("debug") {
                 groupId = "com.github.dsdrachmann"
                 artifactId = "favorite-sdk"
-                version = "0.0.1"
+                version = "0.0.3"
 
                 from(components["debug"])
             }
