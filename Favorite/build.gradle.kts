@@ -58,8 +58,8 @@ afterEvaluate {
                     name = "GitHubPackages"
                     url = uri("https://maven.pkg.github.com/DSDrachmann/FavoriteSDK")
                     credentials {
-                        username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                        password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+                        username = (project.findProperty("gpr.user") ?: System.getenv("USERNAME")).toString()
+                        password = (project.findProperty("gpr.key") ?: System.getenv("TOKEN")).toString()
                     }
                 }
             }
