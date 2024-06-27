@@ -50,57 +50,44 @@ dependencies {
 
 }
 
-
-publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/ds-itu-apps/sdk-quick-android")
-            credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
-            }
-        }
-    }
-    publications {
-        gpr(MavenPublication) {
-            from(components.java)
-        }
-    }
-}
-
 afterEvaluate {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/DSDrachmann/FavoriteSDK")
-            credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
-            }
-        }
-    }
-    publications {
-        gpr(MavenPublication) {
-            from(components.java)
-        }
-    }
     publishing {
-        publications {
-            register("release", MavenPublication::class) {
-                groupId = "com.github.dsdrachmann"
-                artifactId = "favorite-sdk"
-                version = "0.0.3"
-
-                from(components["release"])
+        publishing {
+            repositories {
+                maven {
+                    name = "GitHubPackages"
+                    url = uri("https://maven.pkg.github.com/DSDrachmann/FavoriteSDK")
+                    credentials {
+                        username = project.findProperty("gpr.user")?.toString()
+                            ?: System.getenv("USERNAME")
+                        password =
+                            project.findProperty("gpr.key")?.toString() ?: System.getenv("TOKEN")
+                    }
+                }
             }
-            create<MavenPublication>("debug") {
-                groupId = "com.github.dsdrachmann"
-                artifactId = "favorite-sdk"
-                version = "0.0.3"
-
-                from(components["debug"])
+            publications {
+                create<MavenPublication>("gpr") {
+                    from(components["release"])
+                }
             }
+            /*           publications {
+                           register("release", MavenPublication::class) {
+                               groupId = "com.github.dsdrachmann"
+                               artifactId = "favorite-sdk"
+                               version = "0.0.3"
+
+                               from(components["release"])
+                           }
+                           create<MavenPublication>("debug") {
+                               groupId = "com.github.dsdrachmann"
+                               artifactId = "favorite-sdk"
+                               version = "0.0.3"
+
+                               from(components["debug"])
+                           }
+                       }
+
+             */
         }
     }
 }
