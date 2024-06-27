@@ -1,4 +1,5 @@
 import com.android.ide.common.gradle.RELEASE
+import org.jetbrains.kotlin.psi.callExpressionVisitor
 
 plugins {
     alias(libs.plugins.android.library)
@@ -8,6 +9,7 @@ plugins {
 }
 
 val releaseVersion = "0.0.0.2"
+val artifactIdentification = "dandamonFavorites"
 
 android {
     namespace = "com.Dandd.favorite"
@@ -71,6 +73,7 @@ afterEvaluate {
                 create<MavenPublication>("gpr") {
                     from(components["release"])
                     version = releaseVersion
+                    artifactId = artifactIdentification
                 }
             }
             /*           publications {
