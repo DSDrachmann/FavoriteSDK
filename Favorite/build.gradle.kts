@@ -7,6 +7,8 @@ plugins {
     kotlin("kapt")
 }
 
+val releaseVersion = "0.0.0.2"
+
 android {
     namespace = "com.Dandd.favorite"
     compileSdk = 34
@@ -68,6 +70,7 @@ afterEvaluate {
             publications {
                 create<MavenPublication>("gpr") {
                     from(components["release"])
+                    version = releaseVersion
                 }
             }
             /*           publications {
