@@ -1,6 +1,3 @@
-import com.android.ide.common.gradle.RELEASE
-import org.jetbrains.kotlin.psi.callExpressionVisitor
-
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -9,7 +6,7 @@ plugins {
 }
 
 val releaseVersion = "0.0.0.2"
-val artifactIdentification = "dandamonFavorites"
+val artifactIdentification = "dandamon-favorites"
 
 android {
     namespace = "com.Dandd.favorite"
