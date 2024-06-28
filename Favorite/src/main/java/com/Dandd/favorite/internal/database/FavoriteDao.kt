@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.Dandd.favorite.domain.model.FavoriteEntity
+import com.Dandd.favorite.domain.model.FavoriteEntityHighlight
 
 
 //this is your interface, the interface that decides how you interact with the database
@@ -23,5 +24,17 @@ interface FavoriteDao {
     suspend fun getFavorites(inputAccountName: String, inputEntityType: String): List<FavoriteEntity>
 
     @Query("Delete FROM favoriteEntity WHERE accountName = :inputAccountName AND entityType = :inputEntityType")
-    suspend fun removeAllFavorites(inputAccountName: String, inputEntityType: String)
+    suspend fun removeAllFavoritesOnEntityTypeForUser(inputAccountName: String, inputEntityType: String)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun setFavoriteHighlight(favorite: FavoriteEntityHighlight): Long
+
+    @Query("Select * FROM favoriteEntityHighlight WHERE accountName = :inputAccountName AND entityType = :inputEntityType")
+    suspend fun getHighlights(inputAccountName: String, inputEntityType: String): List<FavoriteEntityHighlight>
+
+    @Delete
+    suspend fun removeFavoriteHighlight(favorite: FavoriteEntityHighlight): Int
+
+    @Query("Delete FROM favoriteEntityHighlight WHERE accountName = :inputAccountName AND entityType = :inputEntityType")
+    suspend fun removeAllFavoriteHighlightsOnEntityTypeForUser(inputAccountName: String, inputEntityType: String): Int
 }
