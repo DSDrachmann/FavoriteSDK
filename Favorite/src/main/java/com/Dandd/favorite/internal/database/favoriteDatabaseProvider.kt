@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 
 //this provides the database, that is, it creates it and returns it.
+//this is the first class you create when you want to instantiate the method
 object favoriteDatabaseProvider {
     private var instance: FavoriteRoomDatabase? = null
 
