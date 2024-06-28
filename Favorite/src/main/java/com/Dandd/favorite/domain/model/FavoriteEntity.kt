@@ -1,4 +1,4 @@
-package com.Dandd.favorite.internal.database.model
+package com.Dandd.favorite.domain.model
 
 import androidx.room.Entity
 

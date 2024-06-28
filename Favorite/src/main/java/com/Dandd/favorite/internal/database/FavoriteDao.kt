@@ -5,10 +5,11 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.Dandd.favorite.internal.database.model.FavoriteEntity
+import com.Dandd.favorite.domain.model.FavoriteEntity
 
 
 //this is your interface, the interface that decides how you interact with the database
+//The FavoriteRoomDatabase inherits this
 @Dao
 interface FavoriteDao {
 

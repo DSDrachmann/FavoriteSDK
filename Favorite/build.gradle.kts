@@ -5,8 +5,10 @@ plugins {
     kotlin("kapt")
 }
 
-val releaseVersion = "0.0.0.2"
+val releaseVersion = "0.0.3"
 val artifactIdentification = "dandamon-favorites"
+val githubOwner = "DSDrachmann"
+val githubProjectName = "FavoriteSDK"
 
 android {
     namespace = "com.Dandd.favorite"
@@ -57,7 +59,8 @@ afterEvaluate {
             repositories {
                 maven {
                     name = "GitHubPackages"
-                    url = uri("https://maven.pkg.github.com/DSDrachmann/FavoriteSDK")
+
+                    url = uri("https://maven.pkg.github.com/${githubOwner}/${githubProjectName}")
                     credentials {
                         username = project.findProperty("gpr.user")?.toString()
                             ?: System.getenv("USERNAME")
