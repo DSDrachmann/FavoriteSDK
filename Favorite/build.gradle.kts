@@ -5,7 +5,7 @@ plugins {
     kotlin("kapt")
 }
 
-val releaseVersion = "1.0.0"
+val releaseVersion = "1.1.0"
 val artifactIdentification = "dandamon-favorites"
 val githubOwner = "DSDrachmann"
 val githubProjectName = "FavoriteSDK"
