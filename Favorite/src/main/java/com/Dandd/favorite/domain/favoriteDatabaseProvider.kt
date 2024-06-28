@@ -1,7 +1,8 @@
-package com.Dandd.favorite.internal.database
+package com.Dandd.favorite.domain
 
 import android.content.Context
 import androidx.room.Room
+import com.Dandd.favorite.internal.database.FavoriteRoomDatabase
 
 //this provides the database, that is, it creates it and returns it.
 //this is the first class you create when you want to instantiate the method
