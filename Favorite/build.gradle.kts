@@ -1,11 +1,14 @@
-import com.android.ide.common.gradle.RELEASE
-
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("maven-publish")
     kotlin("kapt")
 }
+
+val releaseVersion = "0.0.3"
+val artifactIdentification = "dandamon-favorites"
+val githubOwner = "DSDrachmann"
+val githubProjectName = "FavoriteSDK"
 
 android {
     namespace = "com.Dandd.favorite"
@@ -52,21 +55,45 @@ dependencies {
 
 afterEvaluate {
     publishing {
-        publications {
-            register("release", MavenPublication::class) {
-                groupId = "com.github.dsdrachmann"
-                artifactId = "favorite-sdk"
-                version = "0.0.1"
+        publishing {
+            repositories {
+                maven {
+                    name = "GitHubPackages"
 
-                from(components["release"])
+                    url = uri("https://maven.pkg.github.com/${githubOwner}/${githubProjectName}")
+                    credentials {
+                        username = project.findProperty("gpr.user")?.toString()
+                            ?: System.getenv("USERNAME")
+                        password =
+                            project.findProperty("gpr.key")?.toString() ?: System.getenv("TOKEN")
+                    }
+                }
             }
-            create<MavenPublication>("debug") {
-                groupId = "com.github.dsdrachmann"
-                artifactId = "favorite-sdk"
-                version = "0.0.1"
+            publications {
+                create<MavenPublication>("gpr") {
+                    from(components["release"])
+                    version = releaseVersion
+                    artifactId = artifactIdentification
+                }
+            }
+            /*           publications {
+                           register("release", MavenPublication::class) {
+                               groupId = "com.github.dsdrachmann"
+                               artifactId = "favorite-sdk"
+                               version = "0.0.3"
 
-                from(components["debug"])
-            }
+                               from(components["release"])
+                           }
+                           create<MavenPublication>("debug") {
+                               groupId = "com.github.dsdrachmann"
+                               artifactId = "favorite-sdk"
+                               version = "0.0.3"
+
+                               from(components["debug"])
+                           }
+                       }
+
+             */
         }
     }
 }
