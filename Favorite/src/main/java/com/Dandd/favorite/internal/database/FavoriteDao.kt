@@ -14,10 +14,10 @@ import com.Dandd.favorite.domain.model.FavoriteEntity
 interface FavoriteDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun setFavorite(favorite: FavoriteEntity)
+    suspend fun setFavorite(favorite: FavoriteEntity): Long
 
     @Delete
-    suspend fun removeFavorite(favorite: FavoriteEntity)
+    suspend fun removeFavorite(favorite: FavoriteEntity): Int
 
     @Query("Select * FROM favoriteEntity WHERE accountName = :inputAccountName AND entityType = :inputEntityType")
     suspend fun getFavorites(inputAccountName: String, inputEntityType: String): List<FavoriteEntity>
