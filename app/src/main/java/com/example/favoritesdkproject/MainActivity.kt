@@ -12,10 +12,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.lifecycleScope
-import com.Dandd.favorite.internal.database.FavoriteDatabaseRepository
+import com.Dandd.favorite.domain.FavoriteDatabaseRepository
+import com.Dandd.favorite.domain.favoriteDatabaseProvider
+import com.Dandd.favorite.domain.model.FavoriteEntity
 import com.Dandd.favorite.internal.database.FavoriteRoomDatabase
-import com.Dandd.favorite.internal.database.favoriteDatabaseProvider
-import com.Dandd.favorite.internal.database.model.FavoriteEntity
 import com.example.favoritesdkproject.ui.theme.FavoriteSDKProjectTheme
 import kotlinx.coroutines.launch
 
