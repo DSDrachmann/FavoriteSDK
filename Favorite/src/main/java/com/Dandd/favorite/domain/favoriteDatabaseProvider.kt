@@ -11,7 +11,7 @@ object favoriteDatabaseProvider {
 
     fun getInstance(context: Context): FavoriteRoomDatabase {
         return instance ?: synchronized(this) {
-            instance ?: buildDatabase(context).also {instance = it}
+            instance ?: buildDatabase(context).also { instance = it }
         }
     }
 
@@ -20,6 +20,8 @@ object favoriteDatabaseProvider {
             context.applicationContext,
             FavoriteRoomDatabase::class.java,
             "favorite_clock_database"
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 }
