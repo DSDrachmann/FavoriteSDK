@@ -15,6 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import com.Dandd.favorite.domain.FavoriteDatabaseRepository
 import com.Dandd.favorite.domain.favoriteDatabaseProvider
 import com.Dandd.favorite.domain.model.FavoriteEntity
+import com.Dandd.favorite.domain.model.FavoriteEntityHighlight
 import com.Dandd.favorite.internal.database.FavoriteRoomDatabase
 import com.example.favoritesdkproject.ui.theme.FavoriteSDKProjectTheme
 import kotlinx.coroutines.launch
@@ -88,6 +89,49 @@ class MainActivity : ComponentActivity() {
             for (favoriteEntity in favoriteItem3) {
                 println("FavoriteItem: ${favoriteEntity.entityId}")
             }
+
+            val modelHighlight = FavoriteEntityHighlight(
+                accountName = "brain",
+                entityId = "4",
+                entityType = "casino"
+            )
+
+            favoriteRepository.insertFavoriteHighlight(modelHighlight)
+
+
+
+            var highlights = favoriteRepository.getHighlights(inputAccountName = "brain", inputEntityType = "casino")
+
+            for (favoriteEntityHighlight in highlights) {
+                println("FavoriteItem: ${favoriteEntityHighlight.entityId}")
+            }
+
+            val modelHighlight2 = FavoriteEntityHighlight(
+                accountName = "brain",
+                entityId = "5",
+                entityType = "casino"
+            )
+
+            favoriteRepository.insertFavoriteHighlight(modelHighlight2)
+
+            highlights = favoriteRepository.getHighlights(inputAccountName = "brain", inputEntityType = "casino")
+
+            favoriteRepository.removeFavoriteHighlight(modelHighlight)
+
+            highlights = favoriteRepository.getHighlights(inputAccountName = "brain", inputEntityType = "casino")
+
+            favoriteRepository.insertFavoriteHighlight(modelHighlight)
+
+            highlights = favoriteRepository.getHighlights(inputAccountName = "brain", inputEntityType = "casino")
+
+            favoriteRepository.removeAllFavoriteHighlights(inputAccountName = "brain", inputEntityType = "casino")
+
+            highlights = favoriteRepository.getHighlights(inputAccountName = "brain", inputEntityType = "casino")
+
+
+
+            print("")
+
         }
     }
 }
