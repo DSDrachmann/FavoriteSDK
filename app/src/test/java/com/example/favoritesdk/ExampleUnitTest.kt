@@ -1,4 +1,4 @@
-package com.example.favoritesdkproject
+package com.example.favoritesdk
 
 import org.junit.Test
 

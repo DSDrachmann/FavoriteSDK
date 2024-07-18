@@ -1,4 +1,4 @@
-package com.example.favoritesdkproject
+package com.example.favoritesdk
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -17,7 +17,7 @@ import com.Dandd.favorite.domain.favoriteDatabaseProvider
 import com.Dandd.favorite.domain.model.FavoriteEntity
 import com.Dandd.favorite.domain.model.FavoriteEntityHighlight
 import com.Dandd.favorite.internal.database.FavoriteRoomDatabase
-import com.example.favoritesdkproject.ui.theme.FavoriteSDKProjectTheme
+import com.example.favoritesdk.ui.theme.FavoriteSDKProjectTheme
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
