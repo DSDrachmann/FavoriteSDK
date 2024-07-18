@@ -1,4 +1,4 @@
-package com.example.favoritesdkproject.ui.theme
+package com.example.favoritesdk.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
