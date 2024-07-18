@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "FavoriteSDKProject"
+rootProject.name = "FavoriteSDK"
 //See the main activity in app module for description for this
 include(":Favorite")
