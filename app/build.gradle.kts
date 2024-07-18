@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.favoritesdkproject"
+    namespace = "com.example.favoritesdk"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.favoritesdkproject"
+        applicationId = "com.example.favoritesdk"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
