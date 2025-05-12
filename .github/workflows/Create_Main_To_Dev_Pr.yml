@@ -1,0 +1,47 @@
+name: Create Pull Request to Develop
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  create-pull-request:
+    name: Create Pull Request to Develop
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up GitHub CLI
+        uses: docker://ghcr.io/cli/cli:latest
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Pull Request
+        id: create_pr
+        run: |
+          TARGET_BRANCH="develop"
+          SOURCE_BRANCH=$(echo "${GITHUB_REF}" | sed 's/refs\/heads\///')
+
+          # Check if the target branch exists
+          if ! git ls-remote --exit-code --heads origin "$TARGET_BRANCH"; then
+            echo "Target branch $TARGET_BRANCH does not exist."
+            exit 0
+          fi
+
+          # Create the pull request
+          gh pr create \
+            --base "$TARGET_BRANCH" \
+            --head "$SOURCE_BRANCH" \
+            --title "Merge $SOURCE_BRANCH into $TARGET_BRANCH" \
+            --body "This is an automated pull request to merge changes from $SOURCE_BRANCH into $TARGET_BRANCH." \
+            --reviewer "DSDrachmann" \
+            --assignee "DSDrachmann"
+
+      - name: Output PR URL
+        if: steps.create_pr.outcome == 'success'
+        run: |
+          echo "Pull request created successfully."
